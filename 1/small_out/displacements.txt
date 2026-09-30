@@ -1,0 +1,168 @@
+<tr>
+<td>00056v.jpg</td>
+<td>
+ <img src="small_out\euc\00056v.jpg"> 
+</td>
+<td>(1, 5)</td>
+<td>(1, 13)</td>
+<td>
+ <img src="small_out\ncc\00056v.jpg"> 
+</td>
+<td>(1, 5)</td>
+<td>(1, 13)</td>
+</tr>
+
+<tr>
+<td>00125v.jpg</td>
+<td>
+ <img src="small_out\euc\00125v.jpg"> 
+</td>
+<td>(2, 5)</td>
+<td>(1, 9)</td>
+<td>
+ <img src="small_out\ncc\00125v.jpg"> 
+</td>
+<td>(2, 5)</td>
+<td>(1, 9)</td>
+</tr>
+
+<tr>
+<td>00163v.jpg</td>
+<td>
+ <img src="small_out\euc\00163v.jpg"> 
+</td>
+<td>(1, -2)</td>
+<td>(1, -4)</td>
+<td>
+ <img src="small_out\ncc\00163v.jpg"> 
+</td>
+<td>(1, -2)</td>
+<td>(1, -4)</td>
+</tr>
+
+<tr>
+<td>00804v.jpg</td>
+<td>
+ <img src="small_out\euc\00804v.jpg"> 
+</td>
+<td>(-2, 6)</td>
+<td>(-4, 13)</td>
+<td>
+ <img src="small_out\ncc\00804v.jpg"> 
+</td>
+<td>(-2, 6)</td>
+<td>(-4, 13)</td>
+</tr>
+
+<tr>
+<td>01164v.jpg</td>
+<td>
+ <img src="small_out\euc\01164v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(3, 11)</td>
+<td>
+ <img src="small_out\ncc\01164v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(3, 11)</td>
+</tr>
+
+<tr>
+<td>01269v.jpg</td>
+<td>
+ <img src="small_out\euc\01269v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(3, 14)</td>
+<td>
+ <img src="small_out\ncc\01269v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(3, 14)</td>
+</tr>
+
+<tr>
+<td>01522v.jpg</td>
+<td>
+ <img src="small_out\euc\01522v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(2, 13)</td>
+<td>
+ <img src="small_out\ncc\01522v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(2, 13)</td>
+</tr>
+
+<tr>
+<td>01597v.jpg</td>
+<td>
+ <img src="small_out\euc\01597v.jpg"> 
+</td>
+<td>(1, 7)</td>
+<td>(1, 15)</td>
+<td>
+ <img src="small_out\ncc\01597v.jpg"> 
+</td>
+<td>(1, 7)</td>
+<td>(1, 15)</td>
+</tr>
+
+<tr>
+<td>01598v.jpg</td>
+<td>
+ <img src="small_out\euc\01598v.jpg"> 
+</td>
+<td>(0, 8)</td>
+<td>(-1, 15)</td>
+<td>
+ <img src="small_out\ncc\01598v.jpg"> 
+</td>
+<td>(0, 8)</td>
+<td>(-1, 15)</td>
+</tr>
+
+<tr>
+<td>01728v.jpg</td>
+<td>
+ <img src="small_out\euc\01728v.jpg"> 
+</td>
+<td>(1, 8)</td>
+<td>(1, 15)</td>
+<td>
+ <img src="small_out\ncc\01728v.jpg"> 
+</td>
+<td>(1, 8)</td>
+<td>(1, 15)</td>
+</tr>
+
+<tr>
+<td>10131v.jpg</td>
+<td>
+ <img src="small_out\euc\10131v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(3, 12)</td>
+<td>
+ <img src="small_out\ncc\10131v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(3, 12)</td>
+</tr>
+
+<tr>
+<td>31421v.jpg</td>
+<td>
+ <img src="small_out\euc\31421v.jpg"> 
+</td>
+<td>(0, 8)</td>
+<td>(0, 13)</td>
+<td>
+ <img src="small_out\ncc\31421v.jpg"> 
+</td>
+<td>(0, 8)</td>
+<td>(0, 13)</td>
+</tr>
+

@@ -1,0 +1,42 @@
+<tr>
+<td>00932v.jpg</td>
+<td>
+ <img src="custom_out\euc\00932v.jpg"> 
+</td>
+<td>(4, 2)</td>
+<td>(6, 13)</td>
+<td>
+ <img src="custom_out\ncc\00932v.jpg"> 
+</td>
+<td>(4, 2)</td>
+<td>(6, 13)</td>
+</tr>
+
+<tr>
+<td>00938v.jpg</td>
+<td>
+ <img src="custom_out\euc\00938v.jpg"> 
+</td>
+<td>(2, 1)</td>
+<td>(4, 3)</td>
+<td>
+ <img src="custom_out\ncc\00938v.jpg"> 
+</td>
+<td>(2, 1)</td>
+<td>(4, 3)</td>
+</tr>
+
+<tr>
+<td>01055v.jpg</td>
+<td>
+ <img src="custom_out\euc\01055v.jpg"> 
+</td>
+<td>(2, 2)</td>
+<td>(3, 6)</td>
+<td>
+ <img src="custom_out\ncc\01055v.jpg"> 
+</td>
+<td>(2, 2)</td>
+<td>(3, 6)</td>
+</tr>
+

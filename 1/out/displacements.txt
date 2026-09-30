@@ -1,0 +1,252 @@
+<tr>
+<td>00056v.jpg</td>
+<td>
+ <img src="out\euc\00056v.jpg"> 
+</td>
+<td>(1, 5)</td>
+<td>(1, 13)</td>
+<td>
+ <img src="out\ncc\00056v.jpg"> 
+</td>
+<td>(1, 5)</td>
+<td>(1, 13)</td>
+</tr>
+
+<tr>
+<td>00125v.jpg</td>
+<td>
+ <img src="out\euc\00125v.jpg"> 
+</td>
+<td>(2, 5)</td>
+<td>(1, 9)</td>
+<td>
+ <img src="out\ncc\00125v.jpg"> 
+</td>
+<td>(2, 5)</td>
+<td>(1, 9)</td>
+</tr>
+
+<tr>
+<td>00163v.jpg</td>
+<td>
+ <img src="out\euc\00163v.jpg"> 
+</td>
+<td>(1, -2)</td>
+<td>(1, -4)</td>
+<td>
+ <img src="out\ncc\00163v.jpg"> 
+</td>
+<td>(1, -2)</td>
+<td>(1, -4)</td>
+</tr>
+
+<tr>
+<td>00458u.jpg</td>
+<td>
+ <img src="out\euc\00458u.jpg"> 
+</td>
+<td>(5, 42)</td>
+<td>(32, 87)</td>
+<td>
+ <img src="out\ncc\00458u.jpg"> 
+</td>
+<td>(5, 42)</td>
+<td>(32, 87)</td>
+</tr>
+
+<tr>
+<td>00804v.jpg</td>
+<td>
+ <img src="out\euc\00804v.jpg"> 
+</td>
+<td>(-2, 6)</td>
+<td>(-4, 13)</td>
+<td>
+ <img src="out\ncc\00804v.jpg"> 
+</td>
+<td>(-2, 6)</td>
+<td>(-4, 13)</td>
+</tr>
+
+<tr>
+<td>01007a.jpg</td>
+<td>
+ <img src="out\euc\01007a.jpg"> 
+</td>
+<td>(14, 60)</td>
+<td>(13, 129)</td>
+<td>
+ <img src="out\ncc\01007a.jpg"> 
+</td>
+<td>(14, 60)</td>
+<td>(13, 129)</td>
+</tr>
+
+<tr>
+<td>01047u.jpg</td>
+<td>
+ <img src="out\euc\01047u.jpg"> 
+</td>
+<td>(20, 24)</td>
+<td>(33, 71)</td>
+<td>
+ <img src="out\ncc\01047u.jpg"> 
+</td>
+<td>(20, 24)</td>
+<td>(33, 71)</td>
+</tr>
+
+<tr>
+<td>01164v.jpg</td>
+<td>
+ <img src="out\euc\01164v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(3, 11)</td>
+<td>
+ <img src="out\ncc\01164v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(3, 11)</td>
+</tr>
+
+<tr>
+<td>01269v.jpg</td>
+<td>
+ <img src="out\euc\01269v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(3, 14)</td>
+<td>
+ <img src="out\ncc\01269v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(3, 14)</td>
+</tr>
+
+<tr>
+<td>01522v.jpg</td>
+<td>
+ <img src="out\euc\01522v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(2, 13)</td>
+<td>
+ <img src="out\ncc\01522v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(2, 13)</td>
+</tr>
+
+<tr>
+<td>01597v.jpg</td>
+<td>
+ <img src="out\euc\01597v.jpg"> 
+</td>
+<td>(1, 7)</td>
+<td>(1, 16)</td>
+<td>
+ <img src="out\ncc\01597v.jpg"> 
+</td>
+<td>(1, 7)</td>
+<td>(1, 16)</td>
+</tr>
+
+<tr>
+<td>01598v.jpg</td>
+<td>
+ <img src="out\euc\01598v.jpg"> 
+</td>
+<td>(0, 8)</td>
+<td>(-1, 16)</td>
+<td>
+ <img src="out\ncc\01598v.jpg"> 
+</td>
+<td>(0, 8)</td>
+<td>(-1, 16)</td>
+</tr>
+
+<tr>
+<td>01657u.jpg</td>
+<td>
+ <img src="out\euc\01657u.jpg"> 
+</td>
+<td>(9, 51)</td>
+<td>(12, 112)</td>
+<td>
+ <img src="out\ncc\01657u.jpg"> 
+</td>
+<td>(9, 51)</td>
+<td>(12, 112)</td>
+</tr>
+
+<tr>
+<td>01725u.jpg</td>
+<td>
+ <img src="out\euc\01725u.jpg"> 
+</td>
+<td>(44, 77)</td>
+<td>(77, 161)</td>
+<td>
+ <img src="out\ncc\01725u.jpg"> 
+</td>
+<td>(44, 77)</td>
+<td>(77, 161)</td>
+</tr>
+
+<tr>
+<td>01728v.jpg</td>
+<td>
+ <img src="out\euc\01728v.jpg"> 
+</td>
+<td>(1, 8)</td>
+<td>(1, 18)</td>
+<td>
+ <img src="out\ncc\01728v.jpg"> 
+</td>
+<td>(1, 8)</td>
+<td>(1, 18)</td>
+</tr>
+
+<tr>
+<td>01861a.jpg</td>
+<td>
+ <img src="out\euc\01861a.jpg"> 
+</td>
+<td>(38, 71)</td>
+<td>(62, 148)</td>
+<td>
+ <img src="out\ncc\01861a.jpg"> 
+</td>
+<td>(38, 71)</td>
+<td>(62, 148)</td>
+</tr>
+
+<tr>
+<td>10131v.jpg</td>
+<td>
+ <img src="out\euc\10131v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(3, 12)</td>
+<td>
+ <img src="out\ncc\10131v.jpg"> 
+</td>
+<td>(2, 6)</td>
+<td>(3, 12)</td>
+</tr>
+
+<tr>
+<td>31421v.jpg</td>
+<td>
+ <img src="out\euc\31421v.jpg"> 
+</td>
+<td>(0, 8)</td>
+<td>(0, 13)</td>
+<td>
+ <img src="out\ncc\31421v.jpg"> 
+</td>
+<td>(0, 8)</td>
+<td>(0, 13)</td>
+</tr>
+

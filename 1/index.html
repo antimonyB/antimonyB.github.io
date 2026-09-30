@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Portfolio</title>
+    <style>
+    body {
+      font-family: Calibri, sans-serif;
+      margin: 20px;
+      background-color: aliceblue;
+    }
+    h1 {
+      text-align: center;
+    }
+    th {
+      padding: 10px
+    }
+    tr {
+      text-align: center;
+    }
+    img {
+      width: 200px;
+    }
+    .centered-container {
+      max-width: 150ch;    /* Limits the width of the content area */
+      margin: 0 auto;      /* Centers the container horizontally */
+      text-align: left;    /* Ensures text remains left-aligned inside */
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="centered-container">
+      <h1>SYDE 671 Assignment 1</h1>
+      
+      <h2>Selfie</h2>
+      <p>
+        Here are two selfies, one up from afar (left) and one up close (right).
+        I adjusted the zoom to maintain the size of my face.
+        The close-up looks worse because the perspective warps my face.
+      </p>
+      
+      <table>
+        <tr">
+          <img src="fun\selfie_far.jpg" style="padding: 10px;">
+        </tr>
+        <tr>
+          <img src="fun\selfie_close.jpg" style="padding: 10px;">
+        </tr>
+      </table>
+      
+      <h2>Architectural Perspective Compression</h2>
+      
+      <p>
+        Here are two architectural shots. The left one is taken from a further distance and looks flatter.
+        The right one was taken from closer, causing the depth to appear exaggerated in comparison.
+      </p>
+
+      <table>
+        <tr">
+          <img src="fun\building_far.jpg" style="padding: 10px;">
+        </tr>
+        <tr>
+          <img src="fun\building_close.jpg" style="padding: 10px;">
+        </tr>
+      </table>
+
+
+      <h2>The Dolly Zoom</h2>
+      
+      <p>
+        Here is a gif showing off dolly zoom.
+        This is made through several images at different distances zoomed in on the subject.
+        The subject here is another camera peering back at you!
+      </p>
+
+      <img src="fun\syde671_dolly.gif" style="padding: 10px;">
+      
+      <h2>Single Scale Alignment</h2>
+      
+      <p>The three colour channels need to be lined up to produce a colour image.
+        This can be done by sliding the channels along the horizontal and vertical axes until they match up.
+        Euclidian Distance (ED) and Normalized Cross Correlation (NCC) are two quantitative metrics that can indicate how well aligned two channels are.
+      </p>
+
+      <p>
+        First, I crop out the outer 10% of each channel to remove the borders and ensure I am only using the main image content for alignment.      
+        Then, I slide the green channel along both axes, testing the alignment metric against the blue channel for every possible pixel displacement within the range [-15 15].
+        Then, I do the same with the red channel, sliding it and comparing it with the blue channel.
+      </p>
+
+      <p>
+        Here is what this looks like with the ED metric on the image <span style="font-family: monospace;">00804v.jpg</span>:
+      </p>
+      
+      <img src="out\euc\00804v.jpg"> 
+
+      <p>This can be repeated for any image small enough to have a reasonable computation time.
+        Here are the results on the small images with ED and NCC:
+      </p>
+      
+      <table>
+        <tr>
+          <th>Filename</th>
+          <th>ED Image</th>
+          <th>ED Green Displacement (x, y)</th>
+          <th>ED Red Displacement (x, y)</th>
+          <th>NCC Image</th>
+          <th>NCC Green Displacement (x, y)</th>
+          <th>NCC Red Displacement (x, y)</th>
+        </tr>
+
+        <tr>
+        <td>00056v.jpg</td>
+        <td>
+        <img src="small_out\euc\00056v.jpg"> 
+        </td>
+        <td>(1, 5)</td>
+        <td>(1, 13)</td>
+        <td>
+        <img src="small_out\ncc\00056v.jpg"> 
+        </td>
+        <td>(1, 5)</td>
+        <td>(1, 13)</td>
+        </tr>
+
+        <tr>
+        <td>00125v.jpg</td>
+        <td>
+        <img src="small_out\euc\00125v.jpg"> 
+        </td>
+        <td>(2, 5)</td>
+        <td>(1, 9)</td>
+        <td>
+        <img src="small_out\ncc\00125v.jpg"> 
+        </td>
+        <td>(2, 5)</td>
+        <td>(1, 9)</td>
+        </tr>
+
+        <tr>
+        <td>00163v.jpg</td>
+        <td>
+        <img src="small_out\euc\00163v.jpg"> 
+        </td>
+        <td>(1, -2)</td>
+        <td>(1, -4)</td>
+        <td>
+        <img src="small_out\ncc\00163v.jpg"> 
+        </td>
+        <td>(1, -2)</td>
+        <td>(1, -4)</td>
+        </tr>
+
+        <tr>
+        <td>00804v.jpg</td>
+        <td>
+        <img src="small_out\euc\00804v.jpg"> 
+        </td>
+        <td>(-2, 6)</td>
+        <td>(-4, 13)</td>
+        <td>
+        <img src="small_out\ncc\00804v.jpg"> 
+        </td>
+        <td>(-2, 6)</td>
+        <td>(-4, 13)</td>
+        </tr>
+
+        <tr>
+        <td>01164v.jpg</td>
+        <td>
+        <img src="small_out\euc\01164v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(3, 11)</td>
+        <td>
+        <img src="small_out\ncc\01164v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(3, 11)</td>
+        </tr>
+
+        <tr>
+        <td>01269v.jpg</td>
+        <td>
+        <img src="small_out\euc\01269v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(3, 14)</td>
+        <td>
+        <img src="small_out\ncc\01269v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(3, 14)</td>
+        </tr>
+
+        <tr>
+        <td>01522v.jpg</td>
+        <td>
+        <img src="small_out\euc\01522v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(2, 13)</td>
+        <td>
+        <img src="small_out\ncc\01522v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(2, 13)</td>
+        </tr>
+
+        <tr>
+        <td>01597v.jpg</td>
+        <td>
+        <img src="small_out\euc\01597v.jpg"> 
+        </td>
+        <td>(1, 7)</td>
+        <td>(1, 15)</td>
+        <td>
+        <img src="small_out\ncc\01597v.jpg"> 
+        </td>
+        <td>(1, 7)</td>
+        <td>(1, 15)</td>
+        </tr>
+
+        <tr>
+        <td>01598v.jpg</td>
+        <td>
+        <img src="small_out\euc\01598v.jpg"> 
+        </td>
+        <td>(0, 8)</td>
+        <td>(-1, 15)</td>
+        <td>
+        <img src="small_out\ncc\01598v.jpg"> 
+        </td>
+        <td>(0, 8)</td>
+        <td>(-1, 15)</td>
+        </tr>
+
+        <tr>
+        <td>01728v.jpg</td>
+        <td>
+        <img src="small_out\euc\01728v.jpg"> 
+        </td>
+        <td>(1, 8)</td>
+        <td>(1, 15)</td>
+        <td>
+        <img src="small_out\ncc\01728v.jpg"> 
+        </td>
+        <td>(1, 8)</td>
+        <td>(1, 15)</td>
+        </tr>
+
+        <tr>
+        <td>10131v.jpg</td>
+        <td>
+        <img src="small_out\euc\10131v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(3, 12)</td>
+        <td>
+        <img src="small_out\ncc\10131v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(3, 12)</td>
+        </tr>
+
+        <tr>
+        <td>31421v.jpg</td>
+        <td>
+        <img src="small_out\euc\31421v.jpg"> 
+        </td>
+        <td>(0, 8)</td>
+        <td>(0, 13)</td>
+        <td>
+        <img src="small_out\ncc\31421v.jpg"> 
+        </td>
+        <td>(0, 8)</td>
+        <td>(0, 13)</td>
+        </tr>
+
+      </table>
+
+      <h2>Multi-Scale Alignment</h2>
+
+      <p>
+        Large images have many pixels to compare, which takes a long time.
+        To restore the large images in a reasonable amount of time, we need a more efficient approach.
+        This is where multi-scale image pyramids come in.
+      </p>
+
+      <p>
+        By downsampling the image, I can quickly get a rough alignment.
+        Then, the higher resolution image can be used to fine-tune the alignment within a smaller range of displacements.
+        By creating a "pyramid", of several different scales of the same image, I can progressively improve the alignment without too much computational burden.
+      </p>
+
+      <h3>Downsampling</h3>
+
+      <p>
+        To obtain different image scales, I simply subsample the original channels.
+        Every odd-numbered pixel along each axis is discarded, providing a downsampled image with half the original width and height.
+        This is repeated until I obtain an image with a height or width below 64 pixels.
+        This size is not computationally expensive to work with, and further subdivisions were not found to be neccessary during evaluation.
+        This process results in a multi-scale image pyramid.
+        Note that the outer 10% of each image is cropped out, just like it is for the single scale approach.
+      </p>
+
+      <h3>Alignment</h3>
+
+      <p>
+        With the multi-scale image pyramid complete, I can begin aligning the image, starting with the lowest resolution.
+        Initially, I follow the same approach used for single scale alignment, but with a smaller range of displacement values.
+        A displacement range of [-3, 3] was found to work well without increasing the computation time too much.
+        After the current scale is aligned, I switch to the next highest scale.
+        Then, I repeat this process using the previous scale's alignment as an approximate starting point.
+        Eventually I reach the highest scale, i.e. the original image, and obtain a fully aligned high-resolution image.
+      </p>
+      
+      <h3>Example</h3>
+
+      <p>
+        Below is a set of reconstructions for each pyramid scale of the image <span style="font-family: monospace;">00804v.jpg</span>.
+        At each stage, the resolution doubles and the alignment is fine-tuned by a maximum of 3 pixels.
+        The final image on the right is high-resolution and fully aligned. This example uses the ED metric to judge alignment.
+      </p>
+
+      <table>
+        <tr">
+          <img src="pyramid_out\0.jpg" style="padding: 10px;">
+        </tr>
+        <tr>
+          <img src="pyramid_out\1.jpg" style="padding: 10px;">
+        </tr>
+        <tr>
+          <img src="pyramid_out\2.jpg" style="padding: 10px;">
+        </tr>
+        <tr>
+          <img src="pyramid_out\3.jpg" style="padding: 10px;">
+        </tr>
+      </table>
+
+      <h3>Results</h3>
+
+      <h4>Provided images</h4>
+
+      <p>
+        Here are the results for all of the provided images:
+      </p>
+
+      <table>
+        <tr>
+          <th>Filename</th>
+          <th>ED Image</th>
+          <th>ED Green Displacement (x, y)</th>
+          <th>ED Red Displacement (x, y)</th>
+          <th>NCC Image</th>
+          <th>NCC Green Displacement (x, y)</th>
+          <th>NCC Red Displacement (x, y)</th>
+        </tr>
+
+        <tr>
+        <td>00056v.jpg</td>
+        <td>
+        <img src="out\euc\00056v.jpg"> 
+        </td>
+        <td>(1, 5)</td>
+        <td>(1, 13)</td>
+        <td>
+        <img src="out\ncc\00056v.jpg"> 
+        </td>
+        <td>(1, 5)</td>
+        <td>(1, 13)</td>
+        </tr>
+
+        <tr>
+        <td>00125v.jpg</td>
+        <td>
+        <img src="out\euc\00125v.jpg"> 
+        </td>
+        <td>(2, 5)</td>
+        <td>(1, 9)</td>
+        <td>
+        <img src="out\ncc\00125v.jpg"> 
+        </td>
+        <td>(2, 5)</td>
+        <td>(1, 9)</td>
+        </tr>
+
+        <tr>
+        <td>00163v.jpg</td>
+        <td>
+        <img src="out\euc\00163v.jpg"> 
+        </td>
+        <td>(1, -2)</td>
+        <td>(1, -4)</td>
+        <td>
+        <img src="out\ncc\00163v.jpg"> 
+        </td>
+        <td>(1, -2)</td>
+        <td>(1, -4)</td>
+        </tr>
+
+        <tr>
+        <td>00458u.jpg</td>
+        <td>
+        <img src="out\euc\00458u.jpg"> 
+        </td>
+        <td>(5, 42)</td>
+        <td>(32, 87)</td>
+        <td>
+        <img src="out\ncc\00458u.jpg"> 
+        </td>
+        <td>(5, 42)</td>
+        <td>(32, 87)</td>
+        </tr>
+
+        <tr>
+        <td>00804v.jpg</td>
+        <td>
+        <img src="out\euc\00804v.jpg"> 
+        </td>
+        <td>(-2, 6)</td>
+        <td>(-4, 13)</td>
+        <td>
+        <img src="out\ncc\00804v.jpg"> 
+        </td>
+        <td>(-2, 6)</td>
+        <td>(-4, 13)</td>
+        </tr>
+
+        <tr>
+        <td>01007a.jpg</td>
+        <td>
+        <img src="out\euc\01007a.jpg"> 
+        </td>
+        <td>(14, 60)</td>
+        <td>(13, 129)</td>
+        <td>
+        <img src="out\ncc\01007a.jpg"> 
+        </td>
+        <td>(14, 60)</td>
+        <td>(13, 129)</td>
+        </tr>
+
+        <tr>
+        <td>01047u.jpg</td>
+        <td>
+        <img src="out\euc\01047u.jpg"> 
+        </td>
+        <td>(20, 24)</td>
+        <td>(33, 71)</td>
+        <td>
+        <img src="out\ncc\01047u.jpg"> 
+        </td>
+        <td>(20, 24)</td>
+        <td>(33, 71)</td>
+        </tr>
+
+        <tr>
+        <td>01164v.jpg</td>
+        <td>
+        <img src="out\euc\01164v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(3, 11)</td>
+        <td>
+        <img src="out\ncc\01164v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(3, 11)</td>
+        </tr>
+
+        <tr>
+        <td>01269v.jpg</td>
+        <td>
+        <img src="out\euc\01269v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(3, 14)</td>
+        <td>
+        <img src="out\ncc\01269v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(3, 14)</td>
+        </tr>
+
+        <tr>
+        <td>01522v.jpg</td>
+        <td>
+        <img src="out\euc\01522v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(2, 13)</td>
+        <td>
+        <img src="out\ncc\01522v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(2, 13)</td>
+        </tr>
+
+        <tr>
+        <td>01597v.jpg</td>
+        <td>
+        <img src="out\euc\01597v.jpg"> 
+        </td>
+        <td>(1, 7)</td>
+        <td>(1, 16)</td>
+        <td>
+        <img src="out\ncc\01597v.jpg"> 
+        </td>
+        <td>(1, 7)</td>
+        <td>(1, 16)</td>
+        </tr>
+
+        <tr>
+        <td>01598v.jpg</td>
+        <td>
+        <img src="out\euc\01598v.jpg"> 
+        </td>
+        <td>(0, 8)</td>
+        <td>(-1, 16)</td>
+        <td>
+        <img src="out\ncc\01598v.jpg"> 
+        </td>
+        <td>(0, 8)</td>
+        <td>(-1, 16)</td>
+        </tr>
+
+        <tr>
+        <td>01657u.jpg</td>
+        <td>
+        <img src="out\euc\01657u.jpg"> 
+        </td>
+        <td>(9, 51)</td>
+        <td>(12, 112)</td>
+        <td>
+        <img src="out\ncc\01657u.jpg"> 
+        </td>
+        <td>(9, 51)</td>
+        <td>(12, 112)</td>
+        </tr>
+
+        <tr>
+        <td>01725u.jpg</td>
+        <td>
+        <img src="out\euc\01725u.jpg"> 
+        </td>
+        <td>(44, 77)</td>
+        <td>(77, 161)</td>
+        <td>
+        <img src="out\ncc\01725u.jpg"> 
+        </td>
+        <td>(44, 77)</td>
+        <td>(77, 161)</td>
+        </tr>
+
+        <tr>
+        <td>01728v.jpg</td>
+        <td>
+        <img src="out\euc\01728v.jpg"> 
+        </td>
+        <td>(1, 8)</td>
+        <td>(1, 18)</td>
+        <td>
+        <img src="out\ncc\01728v.jpg"> 
+        </td>
+        <td>(1, 8)</td>
+        <td>(1, 18)</td>
+        </tr>
+
+        <tr>
+        <td>01861a.jpg</td>
+        <td>
+        <img src="out\euc\01861a.jpg"> 
+        </td>
+        <td>(38, 71)</td>
+        <td>(62, 148)</td>
+        <td>
+        <img src="out\ncc\01861a.jpg"> 
+        </td>
+        <td>(38, 71)</td>
+        <td>(62, 148)</td>
+        </tr>
+
+        <tr>
+        <td>10131v.jpg</td>
+        <td>
+        <img src="out\euc\10131v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(3, 12)</td>
+        <td>
+        <img src="out\ncc\10131v.jpg"> 
+        </td>
+        <td>(2, 6)</td>
+        <td>(3, 12)</td>
+        </tr>
+
+        <tr>
+        <td>31421v.jpg</td>
+        <td>
+        <img src="out\euc\31421v.jpg"> 
+        </td>
+        <td>(0, 8)</td>
+        <td>(0, 13)</td>
+        <td>
+        <img src="out\ncc\31421v.jpg"> 
+        </td>
+        <td>(0, 8)</td>
+        <td>(0, 13)</td>
+        </tr>
+
+      </table>
+
+      <h4>Chosen images</h4>
+
+      <p>
+        Here are the results for three additional images of my choice:
+      </p>
+
+      <table>
+        <tr>
+          <th>Filename</th>
+          <th>ED Image</th>
+          <th>ED Green Displacement (x, y)</th>
+          <th>ED Red Displacement (x, y)</th>
+          <th>NCC Image</th>
+          <th>NCC Green Displacement (x, y)</th>
+          <th>NCC Red Displacement (x, y)</th>
+        </tr>
+
+        <tr>
+        <td>00932v.jpg</td>
+        <td>
+        <img src="custom_out\euc\00932v.jpg"> 
+        </td>
+        <td>(4, 2)</td>
+        <td>(6, 13)</td>
+        <td>
+        <img src="custom_out\ncc\00932v.jpg"> 
+        </td>
+        <td>(4, 2)</td>
+        <td>(6, 13)</td>
+        </tr>
+
+        <tr>
+        <td>00938v.jpg</td>
+        <td>
+        <img src="custom_out\euc\00938v.jpg"> 
+        </td>
+        <td>(2, 1)</td>
+        <td>(4, 3)</td>
+        <td>
+        <img src="custom_out\ncc\00938v.jpg"> 
+        </td>
+        <td>(2, 1)</td>
+        <td>(4, 3)</td>
+        </tr>
+
+        <tr>
+        <td>01069v.jpg</td>
+        <td>
+        <img src="custom_out\euc\01055v.jpg"> 
+        </td>
+        <td>(2, 4)</td>
+        <td>(4, 10)</td>
+        <td>
+        <img src="custom_out\ncc\01055v.jpg"> 
+        </td>
+        <td>(2, 4)</td>
+        <td>(4, 10)</td>
+        </tr>
+
+      </table>
+
+    </div>
+  </body>
+</html>
