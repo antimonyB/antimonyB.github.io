@@ -66,7 +66,7 @@
 
       <p>
         I compared my two implementations with the function <span style="font-family: monospace;">scipy.signal.convolve2d</span>.
-        T measured the runtime of 9x9 convolutions with a grayscale picture of myself.
+        I measured the runtime of 9x9 convolutions with a grayscale picture.
         As shown in the results below, the two-loop implementation ran faster than the four-loop version.
         This is expected, as the numpy array multiplication implementations are more optimized than manual iteration.
         The scipy function was the fastest of the three.
