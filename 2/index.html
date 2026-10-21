@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Portfolio</title>
+    <style>
+    body {
+      font-family: Calibri, sans-serif;
+      margin: 20px;
+      background-color: aliceblue;
+    }
+    h1 {
+      text-align: center;
+    }
+    th {
+      padding: 10px
+    }
+    tr {
+      text-align: center;
+    }
+    img {
+      width: 300px;
+      padding: 10px;
+    }
+    .centered-container {
+      max-width: 150ch;    /* Limits the width of the content area */
+      margin: 0 auto;      /* Centers the container horizontally */
+      text-align: left;    /* Ensures text remains left-aligned inside */
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="centered-container">
+      <h1>SYDE 671 Assignment 2</h1>
+      
+      <h2>PART 1: Fun with Filters</h2>
+
+      <h3>PART 1.1: Convolutions From Scratch</h2>
+
+      <p>
+        I wrote two different implementations of 2D convolutions. The first one uses four for-loops.
+        The two outer loops iterate through the rows and columns of the input image, "sliding" across every pixel.
+        The two inner loops iterate through the rows and columns of the kernel, multiplying its values with those of the image.
+        Prior to convolving, the input image is padded with zeros around the borders.
+        The amount of padding on each axis is one less than the size of the kernel on that axis.
+        The kernel is then flipped along each axis, and convolved such that it is always contained within the bounds of the padded image.
+        This produces an output image with the same dimensions as the original (i.e. not padded) input image.
+      </p>
+
+      <p>
+        Here is the implementation using four for-loops:
+      </p>
+      <img src="1_1/code1.png" style="width: 800px;">
+
+      <p>
+        The second implementation uses just two loops. Like before, they iterate through the image pixels.
+        Instead of having additional inner loops, the kernel is directly multiplied with the sub-image it overlaps.
+        This is possible because of numpy's element-wise multiplication operation for arrays.
+        The boundaries and zero-padding are handled the same way as before.
+      </p>
+         
+      <p>
+        Here is the implementation using two for-loops:
+      </p>
+      <img src="1_1/code2.png" style="width: 800px;">
+
+      <p>
+        I compared my two implementations with the function <span style="font-family: monospace;">scipy.signal.convolve2d</span>.
+        T measured the runtime of 9x9 convolutions with a grayscale picture of myself.
+        As shown in the results below, the two-loop implementation ran faster than the four-loop version.
+        This is expected, as the numpy array multiplication implementations are more optimized than manual iteration.
+        The scipy function was the fastest of the three.
+      </p>
+
+      <table>
+        <tr>
+          <th>Function</th>
+          <th>Runtime (seconds)</th>
+        </tr>
+        
+        <tr>
+          <td>My 4-loop function</td>
+          <td>2.704</td>
+        </tr>
+        
+        <tr>
+          <td>My 2-loop function</td>
+          <td>0.546</td>
+        </tr>
+        
+        <tr>
+          <td>scipy.signal.convolve2d</td>
+          <td>0.013</td>
+        </tr>        
+      </table>
+
+      <p>Here is the image I used for testing:</p>
+      <img src="1_1/img.jpg">
+
+      <p>
+        The output of each 9x9 convolution is shown below. The 4-loop version is on the left, the 2-loop version in the middle, and the scipy function on the right.
+        The image was converted to grayscale prior to convolution.
+      </p>
+
+      <table>
+        <tr>
+          <td> <img src="1_1/a.png"> </td>
+          <td> <img src="1_1/b.png"> </td>
+          <td> <img src="1_1/c.png"> </td>
+        </tr>
+      </table>
+
+      <p>
+        As you can see, all three convolution functions produce the same output.
+        Now below is what the output looks like for the finite difference operators Dx (left) and Dy (right):
+      </p>
+
+      <table>
+        <tr>
+          <td> <img src="1_1/d.png."> </td>
+          <td> <img src="1_1/e.png."> </td>
+        </tr>
+      </table>
+
+
+
+      <h3>PART 1.2: Finite Difference Operator</h2>
+
+      <p>
+        Here is the cameraman image (left) convolved with Dx (middle) and Dy (right):
+      </p>
+      <table>
+        <tr>
+          <td> <img src="1_2/cameraman.jpg"> </td>
+          <td> <img src="1_2/a.png"> </td>
+          <td> <img src="1_2/b.png"> </td>
+        </tr>
+      </table>
+      
+      <p>
+        Below is the gradient magnitude, computed as the root sum of squares of the x and y gradients.
+      </p>
+      <img src="1_2/c.png">
+      
+      <p>
+        Below is the binarized gradient magnitude, using a threshold of 50 obtained through manual tuning.
+        There is some noise seen as white dots, but further increasing the threshold would cause some edges along the man's leg to be lost.
+      </p>
+      <img src="1_2/d.png">
+      
+      
+      <h3>PART 1.3: Finite Difference Operator</h2>
+
+      <p>
+        To blur the image, I created a 7x7 gaussian kernel with a standard deviation of one using the function <span style="font-family: monospace;">scipy.signal.convolve2d</span> and the outer product.
+        After convolving the gaussian with the image, I repeated the procedure in Part 1.2 to obtain the following edge image:
+      </p>
+      <img src="1_3/a.png">
+
+      <p>
+        There is less noise thanks to the smoothing from the gaussian blur. Note that I retuned the binarization threshold, settling on a value of 45.
+        However, thanks to the gaussian filter, I was able to obtain a better balance of reducing noise and maintaining desired edges.
+      </p>
+      
+      <p>
+        I convolved the guassian kernel with Dx (left) and with Dy (right) to obtain the following Derivative of Gaussian (DoG) filters:
+      </p>
+
+      <table>
+        <tr>
+          <td> <img src="1_3/b.png"> </td>
+          <td> <img src="1_3/c.png"> </td>
+        </tr>
+      </table>
+
+      <p>
+        The DoG filters for the blur and finite difference steps of the procedure to be combined.
+        Below is the result I obtained by convolving the DoG filters and then following the rest of the procedure as before.
+        As expected, the resulting edge image looks the same.
+      </p>
+      <img src="1_3/d.png">
+
+      <h3>Bells and Whistles</h2>
+        
+      <p>
+        I computed the gradient orientation as the arctangent of the ratio of the Y and X gradients.
+        A positive gradient purely in the positive X direction (right) maps to an angle of zero degrees.
+        In the positive Y direction (downward) it would be 90 degrees
+        In other words, the gradient orientation is measured from the horizontal axis and is positive in the clocwise direction.
+        I visualized these orientations by mapping the angle to matplotlibs hsv colormap as shown below.
+      </p>
+      <img src="1_3/e.png">
+
+      <p>
+        To focus on the orientations of the edges, I masked the above result using the binarized edge image obtained in Part 1.3.
+        The result is shown below, successfully indicating the gradient orientations of the edges.
+      </p>
+      <img src="1_3/f.png">
+
+
+      <h2>Part 2: Fun with Frequencies</h2>
+        
+      <h3>PART 2.1: Image "Sharpening"</h2>
+
+      <p>
+        I implemented the unsharp mask filter, which makes images appear sharper by increasing the high frequency content.
+        This is achieved in principle by first blurring the original image with a gaussian kernel, which acts as a low-pass filter.
+        The low-pass output is then subtracted from the original image, leaving behind only the high frequencies.
+        These high frequencies are added to the original image, making its finer details more prominent.
+        The high frequencies can be scaled by a constant first, which corresponds to the amount of "sharpening".
+      </p>
+
+      <p>
+        To reduce the number of convolutions, I combined the steps into a single kernel.
+        This required the use of the identity kernel, an impulse that simply produces the exact same image it is convolved with.
+        A high pass filter is obtained as the difference between the identity kernel and a gaussian kernel.
+        This is multuplied by the sharpening constant, and then summed with another identity kernel.
+        Convolution with the resulting kernel is equivalent to the previously described unsharp mask procedure.
+      </p>
+
+      <p>I picked a sharpening constant of 2 through trial and error and obtained the results below.
+        The sharpened image (right) does indeed appear sharper than the original image (left).
+      </p>
+      <img src="2_1/a.png" style="width: 600px;">
+
+      <p>
+        I tried blurring an image with a gaussian and then restoring it using the unsharp mask filter.
+        Below is the blurred image (left), sharpened image (middle), and original (right).
+        The sharpened image looks better then the blurred image. However, it is not as good as the original as it cannot restore the lost information.
+      </p>
+      <img src="2_1/b.png" style="width: 900px;">
+
+      <p>
+        Below is the output using the following sharpening constants: 1 (left), 2 (middle), and 3 (right).
+        A value of two looks best to me, as too much sharpening starts to look noisy.
+      </p>
+      <img src="2_1/c.png" style="width: 900px;">
+        
+      <h3>PART 2.2: Hybrid Images</h2>
+
+      <p>
+        I implemented hybrid images by combining the low frequenices of one image with the high frequencies of another.
+        The low frequencies were obtained by convolving with a gaussian kernel.
+        The high frequencies were obtained by convolving with the same gaussian kernel, and subtracting the result from the original image.
+        After experimenting with different gaussians, I found good results using a standard deviation of three, corresponding to a low-pass filter cutoff frequency of 0.044 cycles/sample.
+        This let me see the high-frequency image up close to my screen, and the low frequency image from a moderate but not inconvenient distance away.
+      </p>
+      
+      <p>
+        Here are the original two images I used:
+      </p>
+
+      <table>
+        <tr>
+          <td> <img src="2_2/DerekPicture.jpg"> </td>
+          <td> <img src="2_2/nutmeg.jpg"> </td>
+        </tr>
+      </table>
+      
+      <p>
+        Here they are with their faces aligned:
+      </p>
+
+      <table>
+        <tr>
+          <td> <img src="2_2/man.png"> </td>
+          <td> <img src="2_2/cat.png"> </td>
+        </tr>
+      </table>
+
+      <p>
+        Below are the fourier transform log magnitudes for the image of the man (left) and the cat (right):
+        Frequency increases with distance from the center of the plots.
+      </p>
+
+      <table>
+        <tr>
+          <td> <img src="2_2/a.png"> </td>
+          <td> <img src="2_2/b.png"> </td>
+        </tr>
+      </table>
+
+      <p>
+        Below are the fourier transform log magnitudes after low-pass (left) and high-pass (right) filtering.
+        Much of the high frequencies have been removed from the man's face as seen from the regions far from the center of the left plot.
+        As for the cat, the right plot shows that the low frequencies are now longer that much more prominent than the high frequencies.
+      </p>
+
+      <table>
+        <tr>
+          <td> <img src="2_2/c.png"> </td>
+          <td> <img src="2_2/d.png"> </td>
+        </tr>
+      </table>
+
+      <p>
+        Here is the final hybrid. You can see a cat's face up close, and a man's face from a distance.
+      </p>
+      <img src="2_2/e.png">
+      
+      <p>
+        Here is another example. On the left are the two original images. On the right you can see me frowning up close, or smiling from a distance
+      </p>
+      <table>
+        <tr>
+          <td> <img src="smile.jpg"> </td>
+          <td> <img src="frown.jpg"> </td>
+          <td> <img src="2_2/f.png"> </td>
+        </tr>
+      </table>
+
+      <h3>Bells and Whistles</h2>
+      
+      <p>
+        I experimented with colour, applying the low and high pass filters to all three channels of each RGB image.
+        Additionally, I tried keeping one of the images in grayscale while proccessing the other in colour.
+        The results are below with both images in colour (left), only the high frequency image in colour (middle), and only the low frequency image in colour (right).
+      </p>
+      
+      <table>
+        <tr>
+          <td> <img src="2_2/g.png"> </td>
+          <td> <img src="2_2/h.png"> </td>
+          <td> <img src="2_2/i.png"> </td>
+        </tr>
+      </table>
+
+      <p>
+        As seen in the leftmost result, the colours of the low frequency image appear to dominate.
+        Thus, the middle result using colour only for the high frequency image seems to give the most balanced result, adding a subtle touch to the close-up view of the cat.
+      </p>
+      
+
+      <h3>PART 2.3: Guassian and Laplacian Stacks</h2>
+      
+      <p>
+        I implemented gaussian and laplacian stacks which will later be used for multi-resolution blending.
+        The gaussian stack is created by repeatedly applying a gaussian filter.
+        Then, each level of the laplacian stack is obtained as a difference of levels of the gaussain stack.
+        Note that I did this all in colour to satisfy the upcoming Bells and Whistles component.
+      </p>
+
+      <p>Here are the 6-level gaussian stacks for the apple (left column) and orange (right column).
+        The level increases with each row, successively becoming more blurred.
+      </p>
+      <img src="2_3/a.png">
+      
+      <p>Here are the the laplacian stacks.
+        Again, the level increases with each row, giving the difference between the corresponding and next gaussian stack levels.
+        The last level is simply set to the gaussain stack's last level since there is no next level to subtract.
+      </p>
+      <img src="2_3/b.png">
+      
+      <p>
+        Below is a recreation of Figure 3.42 in <a href="https://szeliski.org/Book/">Szelski (Ed 2)</a> page 167.
+        The two leftmost columns show every other level of the laplacian stacks, as well as the original images in the bottom row.
+        Note that the rightmost column of multiresolution splines is obtained from the upcoming Part 2.4.
+        The brightness of the laplacian stack images have been scaled to improve contrast.
+        Slight differences between my figure and the original figure may be caused by differences in this contrast adjustment.
+      </p>
+      <img src="2_3/c.png" style="width: 600px;">
+
+
+      <h3>PART 2.4: Multiresolution Blending</h3>
+
+      <p>
+        Multiresolution blending is accomplished by stitching together each level of the laplacian stacks for two images.
+        A mask is used to split the output image into two regions (e.g. left and right halves), each corresponding to one of the two input images.
+        Since I am using stacks instead of pyramids, I use a mask with a soft, blurry edge.
+        My result for the orange and apple is shown below.
+      </p>
+      <img src="2_4/a.png">
+      
+      <p>
+        Here is another example, with the two original images on the left, and the blended image on the right.
+      </p>
+      <table>
+        <tr>
+          <td> <img src="smile.jpg"> </td>
+          <td> <img src="frown.jpg"> </td>
+          <td> <img src="2_4/b.png"> </td>
+        </tr>
+      </table>
+      
+      <p>
+        Here is an example using a circular mask shown on the left.
+      </p>
+      <table>
+        <tr>
+          <td> <img src="2_4/c.png"> </td>
+          <td> <img src="2_4/d.png"> </td>
+          <td> <img src="2_4/e.png"> </td>
+          <td> <img src="2_4/f.png"> </td>
+        </tr>
+      </table>
+
+      <h3>Bells and Whistles</h2>
+
+      <p>
+        I create my gaussian stacks by applying gaussian blurs to all three colour channels.
+        Since the laplacian stacks and blended images are derived from gaussian stacks, they too maintain the three colour channels.
+        As a result, you get to see all my images in Parts 2.3 and 2.4 in colour!
+      </p>
+
+    </div>
+  </body>
+</html>
