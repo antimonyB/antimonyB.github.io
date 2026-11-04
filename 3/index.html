@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Portfolio</title>
+    <style>
+    body {
+      font-family: Calibri, sans-serif;
+      margin: 20px;
+      background-color: aliceblue;
+    }
+    h1 {
+      text-align: center;
+    }
+    th {
+      padding: 10px
+    }
+    tr {
+      text-align: center;
+    }
+    img {
+      width: 300px;
+      padding: 10px;
+    }
+    .centered-container {
+      max-width: 150ch;    /* Limits the width of the content area */
+      margin: 0 auto;      /* Centers the container horizontally */
+      text-align: left;    /* Ensures text remains left-aligned inside */
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="centered-container">
+      <h1>SYDE 671 Assignment 3</h1>
+      
+      <h2>PART A: Image Warping and Mosaicing</h2>
+
+      <h3>PART A.1: Shoot the pictures</h3>
+
+      <p>
+        I took photos of two different scenes, ensuring for each one that the transforms between photos were projective.
+      </p>
+
+      <p>
+        Here are two photos of the first scene:
+      </p>
+      <table>
+        <tr>
+          <td> <img src="1a.jpg" style="width: 250px;"> </td>
+          <td> <img src="1b.jpg" style="width: 250px;"> </td>
+        </tr>
+      </table>
+      
+      <p>
+        And here are three photos of the second scene:
+      </p>
+      <table>
+        <tr>
+          <td> <img src="2a.jpg" style="width: 250px;"> </td>
+          <td> <img src="2b.jpg" style="width: 250px;"> </td>
+          <td> <img src="2c.jpg" style="width: 250px;"> </td>
+        </tr>
+      </table>
+      
+
+      <h3>PART A.2: Recover Homographies </h3>
+      
+      <p>
+        I picked 5 points to relate two images of the first scene. These point correspondences are shown below, highlighted in red.
+      </p>
+      <table>
+        <tr>
+          <td> <img src="1a_dot.jpg" style="width: 250px;"> </td>
+          <td> <img src="1b_dot.jpg" style="width: 250px;"> </td>
+        </tr>
+      </table>
+
+      <p>
+        Using singular value decomposition, I obtained the least-squares solution to the overdetermined system relating each of the point correspondences.
+        Here is the matrix equation relating the elements of H with the five point correspondences (x, y) and (x', y'):
+      </p>
+
+      <img src="equation.png" style="width: 450px;">
+
+      <p>
+        Solving this gave me the values for the homography matrix that maps points from the first image to the second image. 
+        The obtained matrix is as follows:
+      </p>
+
+      <img src="matrix.png" style="width: 250px;">
+
+      <h3>PART A.3: Warp the Images </h3>
+
+      <p>
+        I used the recovered homography matrix to warp one image towards the other.
+        For each output pixel coordinate, I used the inverse of the matrix to find the corresponding coordinate on the source image.
+        Using one of either nearest-neighbour interpolation or bilinear interpolation, I obtained the RGB value of the source image at that point.
+        Setting the output pixel to this value produced a warped image.
+      </p>
+
+      <p>
+        Below are the results for nearest-neighbour (left) and bilinear (right) interpolation.
+        Bilinear interpolation looks slightly better, but it takes longer to compute.
+      </p>
+
+      <table>
+        <tr>
+          <td> <img src="nn.png" style="width: 350px;"> </td>
+          <td> <img src="bil.png" style="width: 350px;"> </td>
+        </tr>
+      </table>
+
+      <h3>PART A.4: Blend the Images </h3>
+
+      <p>
+        I created an image mosaic by blending the warped source image with the original destination image.
+        Prior to warping, I created appended an alpha channel to each image.
+        The alpha has a value of one in the center of the image, and it decreases proportionally to the distance from the center, reaching zero at the edge.
+        Warping was performed using bilinear interpolation.
+        After warping, the images were blended using a weighted average for each pixel corresponding to the alpha channel values.
+      </p>
+
+      <p>
+        The mosaic is shown below, blended without the alpha channels (left) and with the alpha channels (right). Using the alpha values significantly reduces edge artifacts.
+      </p>
+        
+      <table>
+        <tr>
+          <td> <img src="mosaic_noblend.png" style="width: 350px;"> </td>
+          <td> <img src="mosaic_blend.png" style="width: 350px;"> </td>
+        </tr>
+      </table>
+
+      <h2>PART B: Feature Matching for Autostitching</h2>
+
+      <h3>PART B.1: Harris Corner Detection</h3>
+
+      <p>
+        I used the Harris detector to identify corners, and selected a random subset of 400 them to use as features.
+      </p>
+      <p>
+        Below are the detected (left) and selected (right) corners.
+      </p>
+
+      <table>
+        <tr>
+          <td> <img src="harris_raw.png" style="width: 350px;"> </td>
+          <td> <img src="harris_rand.png" style="width: 350px;"> </td>
+        </tr>
+      </table>
+
+      <h3>PART B.2: Feature Descriptor Extraction</h3>
+
+      <p>
+        Features were extracted as 8x8 downsampled patches of 40x40 pixels. Below are two example features and the center locations of their patches marked in blue.
+      </p>
+
+      <table>
+        <tr>
+          <td> <img src="feat_loc.png" style="width: 350px;"> </td>
+          <td> <img src="feat1.png" style="width: 250px;"> </td>
+          <td> <img src="feat2.png" style="width: 250px;"> </td>
+        </tr>
+      </table>
+
+      <h3>PART B.3: Feature Matching</h3>
+
+      <p>
+        I compared eature vectors between the two images using the sum-squared error to find their first and second nearest neighbours.
+        I filtered out features by thresholding the ratio of the first and second nearest neighbours.
+        If the ratio was below 0.8, the feature and its nearest neighbour were kept as a likeley match.
+      </p>
+
+      <p>
+        The colour-coded matched feature locations are marked below.
+      </p>
+
+      <table>
+        <tr>
+          <td> <img src="match_dest.png" style="width: 350px;"> </td>
+          <td> <img src="match_source.png" style="width: 350px;"> </td>
+        </tr>
+      </table>
+
+      <p>
+        Below are three examples of these matched features, side-by-side.
+      </p>
+
+      <img src="match1.png" style="width: 250px;">
+
+      <img src="match2.png" style="width: 250px;">
+
+      <img src="match3.png" style="width: 250px;">
+      
+      
+      <h3>PART B.4: RANSAC For Robust Homography</h3>
+
+      <p>
+        Four-point RANSAC was used to obtain the homography matrix.
+        This algorithm randomly samples several groups of four correspondence point pairs, and identifies inlier points based on a threshold distance.
+        I found a threshold distance of five pixels to work well.
+        The group with the most inliers is used to compute the final homography matrix (with the inlier points included in the system setup).
+      </p>
+
+      <p>
+        With the homography matrix automatically obtained we can stitch the image using the warping and blending method as before.
+        Below are the final results of autostitching (left) compared to the previously created manual mosaic (right).
+      </p>
+
+      <table>
+        <tr>
+          <td> <img src="auto.png" style="width: 450px;"> </td>
+          <td> <img src="mosaic_blend.png" style="width: 450px;"> </td>
+        </tr>
+      </table>
+
+      <p>
+        Using the same procedure, here is the autostitching for the second scene containing three images, with the original images shown again further below:
+      </p>
+
+      <img src="auto2.png" style="width: 800px;">
+
+      <table>
+        <tr>
+          <td> <img src="2a.jpg" style="width: 250px;"> </td>
+          <td> <img src="2b.jpg" style="width: 250px;"> </td>
+          <td> <img src="2c.jpg" style="width: 250px;"> </td>
+        </tr>
+      </table>
+
+    </div>
+  </body>
+</html>
